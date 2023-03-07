@@ -6,6 +6,8 @@ let recommended4u = document.querySelector("#recommended4u")
 let coverImg = document.getElementById("cover");
 let songName = document.querySelector("#playerlft h5");
 let singerName = document.querySelector("#playerlft span");
+let volumeBar = document.getElementById("volumeBar");
+let volumeButton = document.getElementById("volume")
 
 let recentlyPlayed = [
     { name: "Let Me Love You", details: "DJ Snake - Let Me Love You ft. Justin Bieber", cover: "https://upload.wikimedia.org/wikipedia/en/a/a5/DJSnakeLetMeLoveYou.jpg", filePath: "./songs/1.mp3" },
@@ -47,10 +49,9 @@ let recommend4u = [
 
 let playElement = new Audio("./songs/1.mp3");
 
-
 //progressBar Update
 playElement.addEventListener("timeupdate", () => {
-    progress = parseInt(playElement.currentTime / playElement.duration * 100);
+    progress = (playElement.currentTime / playElement.duration * 100);
     progressbar.value = progress;
     // console.log(progress);
 })
@@ -82,7 +83,7 @@ recentlyPlayed.forEach((elem, i) => {
     clutter += `<div class="card">
     <div class="image">
         <img src="${elem.cover}" alt="">
-        <i class="ri-play-circle-fill b" id = "${i}"></i>
+        <i class="ri-play-circle-fill" id = "${i}"></i>
     </div>
     <div class="text">
         <h3>${elem.name}</h3>
@@ -171,5 +172,20 @@ recommended4u.addEventListener("click", function (details) {
 //repeat
 //suffel
 //add to fav
-//volum
 
+//volume
+function rangeSlide(value){
+    document.getElementById("volumeBar").innerHTML = value;
+    // console.log(value);
+    playElement.volume = value /100;
+    if(value == 0){
+        volumeButton.classList.remove("ri-volume-down-line");
+        volumeButton.classList.add("ri-volume-mute-line")
+    }
+    else{
+        volumeButton.classList.add("ri-volume-down-line");
+        volumeButton.classList.remove("ri-volume-mute-line")
+    }
+}
+
+//effect

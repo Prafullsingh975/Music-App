@@ -99,8 +99,10 @@
                 <input type="range" id="progressbar" value="0" min="0" max="100">
             </div>
             <div id="playerrgt">
-                <i class="ri-volume-down-line"></i>
-                <input type="range" min="0" max="100">
+                <i class="ri-volume-down-line" id="volume"></i>
+                <span id="volumeBar">100</span>
+                <input type="range" value="100" min="0" max="100" onchange="rangeSlide(this
+                .value)" onmousemove="rangeSlide(this.value)">
             </div>
         </div>
     </div>

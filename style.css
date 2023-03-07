@@ -243,15 +243,17 @@ html,body{
 }
 #playerrgt{
     display: flex;
-    gap: 2vh;
-    font-size: 2rem;
+    align-items: center;
+    justify-content: center;
+    /* gap: 2vh; */
+    color: #fff;
+    /* font-size: 2rem; */
 }
-
-@keyframes move{
-    0%{
-        bottom: -30%;
-    }
-    100%{
-        bottom: 1%;
-    }
+#volumeBar{
+    font-size: 1.2rem;
+    margin-right: 2vh;
+}
+#playerrgt i{
+    font-size: 2rem;
+    margin-right: 5px;
 }
