@@ -7,7 +7,16 @@ let coverImg = document.getElementById("cover");
 let songName = document.querySelector("#playerlft h5");
 let singerName = document.querySelector("#playerlft span");
 let volumeBar = document.getElementById("volumeBar");
-let volumeButton = document.getElementById("volume")
+let volumeButton = document.getElementById("volume");
+let volRange = document.getElementById("vol");
+let previous = document.getElementById("pre");
+let nextSong = document.getElementById("nxt");
+let repeat = document.getElementById("repeat");
+var num;
+let songIndex = 0;
+let ch = 0;
+let rec = 0;
+let vol;
 
 let recentlyPlayed = [
     { name: "Let Me Love You", details: "DJ Snake - Let Me Love You ft. Justin Bieber", cover: "https://upload.wikimedia.org/wikipedia/en/a/a5/DJSnakeLetMeLoveYou.jpg", filePath: "./songs/1.mp3" },
@@ -20,7 +29,7 @@ let recentlyPlayed = [
     { name: "Kahani Suno", details: "Singer-Kaifi Khalil", cover: "https://www.pagalworldt.com/wp-content/uploads/2023/02/Kahani-Suno-2-0-mp3-image.jpg", filePath: "./songs/8.mp3" },
     { name: "Malang Sajna", details: "Singer-Sachet Parampara", cover: "https://c.saavncdn.com/303/Malang-Sajna-Hindi-2022-20221213190427-500x500.jpg", filePath: "./songs/9.mp3" },
     { name: "Ishq Nahi Karte", details: "Singer-B Praak", cover: "https://mobstatus.com/wp-content/uploads/2022/03/ishq-nahi-karte-status.jpg", filePath: "./songs/10.mp3" },
-    
+
 ];
 let charts = [
     { name: "Judaai", details: "Mitraz", cover: "https://pagalnew.com/coverimages/Judaai-Mitraz-500-500.jpg", filePath: "./songs/11.mp3" },
@@ -53,6 +62,10 @@ let playElement = new Audio("./songs/1.mp3");
 playElement.addEventListener("timeupdate", () => {
     progress = (playElement.currentTime / playElement.duration * 100);
     progressbar.value = progress;
+
+    //changing progressBar color
+    var color = `linear-gradient(90deg,orangered ${progress}%,#dadada ${progress}%)`;
+    progressbar.style.background = color;
     // console.log(progress);
 })
 
@@ -76,6 +89,7 @@ play.addEventListener("click", () => {
     }
 })
 
+
 //Recent Played Loader
 var clutter = ""
 recentlyPlayed.forEach((elem, i) => {
@@ -95,15 +109,17 @@ recentlyPlayed.forEach((elem, i) => {
 })
 
 //Recent Played Player
-recPlayed.addEventListener("click", function (details) {
+recPlayed.addEventListener("click",function (details) {
     var x = (details.target.id);
-    playElement.src =`${recentlyPlayed[x].filePath}`;
+    playElement.src = `${recentlyPlayed[x].filePath}`;
     playElement.play();
     coverImg.src = `${recentlyPlayed[x].cover}`;
     songName.textContent = `${recentlyPlayed[x].name}`;
     singerName.textContent = `${recentlyPlayed[x].details}`;
     play.classList.remove("ri-play-circle-fill")
     play.classList.add("ri-pause-circle-fill")
+    songIndex = parseInt(x);
+    num = (recentlyPlayed[x].filePath.split("/"))[2].split(".")[0];
 })
 
 //Chart Loader
@@ -128,13 +144,15 @@ charts.forEach((elem2, i2) => {
 chartsRec.addEventListener("click", function (details) {
     var x = (details.target.id);
     // console.log(x);
-    playElement.src =`${charts[x].filePath}`;
+    playElement.src = `${charts[x].filePath}`;
     playElement.play();
     coverImg.src = `${charts[x].cover}`;
     songName.textContent = `${charts[x].name}`;
     singerName.textContent = `${charts[x].details}`;
     play.classList.remove("ri-play-circle-fill")
     play.classList.add("ri-pause-circle-fill")
+    ch = parseInt(x);
+    num = (charts[x].filePath.split("/"))[2].split(".")[0];
 })
 
 //Recommende Loader
@@ -159,33 +177,132 @@ recommend4u.forEach((elem3, i3) => {
 recommended4u.addEventListener("click", function (details) {
     var x = (details.target.id);
     // console.log(x);
-    playElement.src =`${recommend4u[x].filePath}`;
+    playElement.src = `${recommend4u[x].filePath}`;
     playElement.play();
     coverImg.src = `${recommend4u[x].cover}`;
     songName.textContent = `${recommend4u[x].name}`;
     singerName.textContent = `${recommend4u[x].details}`;
     play.classList.remove("ri-play-circle-fill")
     play.classList.add("ri-pause-circle-fill")
+    rec = parseInt(x);
+    num = (recommend4u[x].filePath.split("/"))[2].split(".")[0];
 })
 
 //previous & next
+
+//next song
+//recentlyPlayed
+if (num>0 && num<11) {
+    nextSong.addEventListener("click", () => {
+        if (songIndex == recentlyPlayed.length - 1)
+            songIndex = 0;
+        else
+            songIndex++;
+    
+        let x = songIndex;
+        playElement.src = `${recentlyPlayed[x].filePath}`;
+        playElement.play();
+        coverImg.src = `${recentlyPlayed[x].cover}`;
+        songName.textContent = `${recentlyPlayed[x].name}`;
+        singerName.textContent = `${recentlyPlayed[x].details}`;
+        play.classList.remove("ri-play-circle-fill")
+        play.classList.add("ri-pause-circle-fill")
+        num = (recentlyPlayed[x].filePath.split("/"))[2].split(".")[0];
+    })
+}
+
+else if (num>10 && num<21){
+    nextSong.addEventListener("click", () => {
+        if (ch == charts.length - 1)
+            ch = 0;
+        else
+            ch++;
+    
+        let x = ch;
+        playElement.src = `${charts[x].filePath}`;
+        playElement.play();
+        coverImg.src = `${charts[x].cover}`;
+        songName.textContent = `${charts[x].name}`;
+        singerName.textContent = `${charts[x].details}`;
+        play.classList.remove("ri-play-circle-fill")
+        play.classList.add("ri-pause-circle-fill")
+        num = (charts[x].filePath.split("/"))[2].split(".")[0];
+    })
+}
+//recommend4u
+else if(num>20 && num<31){
+    nextSong.addEventListener("click", () => {
+        if (rec == recommend4u.length - 1)
+            rec = 0;
+        else
+            rec++;
+    
+        let x = rec;
+        playElement.src = `${recommend4u[x].filePath}`;
+        playElement.play();
+        coverImg.src = `${recommend4u[x].cover}`;
+        songName.textContent = `${recommend4u[x].name}`;
+        singerName.textContent = `${recommend4u[x].details}`;
+        play.classList.remove("ri-play-circle-fill")
+        play.classList.add("ri-pause-circle-fill")
+        num = (recommend4u[x].filePath.split("/"))[2].split(".")[0];
+    })
+}
+
+//previous song
+previous.addEventListener("click", () => {
+    if (songIndex == 0) {
+        songIndex = 0;
+        alert("Not previous Song Found")
+    }
+    else
+        songIndex--;
+
+    let x = songIndex;
+    playElement.src = `${recentlyPlayed[x].filePath}`;
+    playElement.play();
+    coverImg.src = `${recentlyPlayed[x].cover}`;
+    songName.textContent = `${recentlyPlayed[x].name}`;
+    singerName.textContent = `${recentlyPlayed[x].details}`;
+    play.classList.remove("ri-play-circle-fill")
+    play.classList.add("ri-pause-circle-fill")
+    // player(x++);
+})
 //repeat
+let flag = 0;
+repeat.addEventListener("click", () => {
+    if (flag == 0) {
+        repeat.style.backgroundColor = "#222"
+        flag = 1;
+        playElement.loop = true;
+    }
+    else {
+        repeat.style.backgroundColor = "transparent"
+        flag = 0
+        playElement.loop = false;
+    }
+    // player(x++);
+})
 //suffel
-//add to fav
+//effect
 
 //volume
-function rangeSlide(value){
+function rangeSlide(value) {
+    vol = value;
     document.getElementById("volumeBar").innerHTML = value;
-    // console.log(value);
-    playElement.volume = value /100;
-    if(value == 0){
+    playElement.volume = value / 100;
+    if (value == 0) {
         volumeButton.classList.remove("ri-volume-down-line");
         volumeButton.classList.add("ri-volume-mute-line")
     }
-    else{
+    else {
         volumeButton.classList.add("ri-volume-down-line");
         volumeButton.classList.remove("ri-volume-mute-line")
     }
 }
 
-//effect
+//Changing VolumeBar Color
+['mousemove','click'].forEach(evt =>volRange.addEventListener(evt, function () {
+    var color = `linear-gradient(90deg,orangered ${vol}%,#dadada ${vol}%)`;
+    volRange.style.background = color;
+}))
