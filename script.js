@@ -66,7 +66,6 @@ playElement.addEventListener("timeupdate", () => {
     //changing progressBar color
     var color = `linear-gradient(90deg,orangered ${progress}%,#dadada ${progress}%)`;
     progressbar.style.background = color;
-    // console.log(progress);
 })
 
 //audio seek
