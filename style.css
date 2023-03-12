@@ -1,24 +1,29 @@
 @font-face {
-    font-family:"gilroy" ;
+    font-family: "gilroy";
     src: url(./fonts/Gilroy-Regular_0.otf);
 }
-*{
+
+* {
     margin: 0%;
     padding: 0%;
     box-sizing: border-box;
     font-family: gilroy;
 }
-html,body{
+
+html,
+body {
     width: 100%;
     height: 100%;
 }
-#main{
+
+#main {
     position: relative;
     display: flex;
     width: 100%;
     background-color: #23272C;
 }
-#navTop{
+
+#navTop {
     position: fixed;
     z-index: 99;
     width: 100%;
@@ -26,13 +31,14 @@ html,body{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 3vh ;
+    padding: 3vh;
     padding-left: 12vh;
     font-size: 2rem;
     background-color: #23272C;
 
 }
-#search{
+
+#search {
     width: 25vw;
     height: 6vh;
     display: flex;
@@ -42,25 +48,28 @@ html,body{
     gap: 2vh;
     padding-left: 2vh;
     color: #ffffffea;
-    box-shadow: inset 7px 7px 10px -4px rgba(0,0,0,0.44) ;
+    box-shadow: inset 7px 7px 10px -4px rgba(0, 0, 0, 0.44);
     border-right: 1px solid #fff;
     border-bottom: 1px solid #fff;
-    background-color: #23272C;    
+    background-color: #23272C;
 }
-#search input{
+
+#search input {
     border: none;
     background-color: transparent;
     font-size: 1.5rem;
     outline: none;
     color: #fff;
 }
-.navrgt{
+
+.navrgt {
     display: flex;
     align-items: center;
     gap: 2vh;
     color: #ffffffea;
 }
-.crclBorder{
+
+.crclBorder {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -69,10 +78,11 @@ html,body{
     font-size: 1.5rem;
     background-color: #23272C;
     border-radius: 50%;
-    box-shadow: -2px -2px 2px -0.5px rgba(255,255,255,0.66),5px 5px 2px 0px rgba(0,0,0,0.44) ;
+    box-shadow: -2px -2px 2px -0.5px rgba(255, 255, 255, 0.66), 5px 5px 2px 0px rgba(0, 0, 0, 0.44);
 
 }
-.navrgt button{
+
+.navrgt button {
     height: 6vh;
     width: 9vw;
     font-size: 2vh;
@@ -83,9 +93,10 @@ html,body{
     border-radius: 17px;
     border: none;
     color: #ffffffea;
-    box-shadow: -2px -2px 2px -0.5px rgba(255,255,255,0.66),5px 5px 2px 0px rgba(0,0,0,0.44) ;
+    box-shadow: -2px -2px 2px -0.5px rgba(255, 255, 255, 0.66), 5px 5px 2px 0px rgba(0, 0, 0, 0.44);
 }
-#navLeft{
+
+#navLeft {
     position: fixed;
     z-index: 999;
     display: flex;
@@ -100,18 +111,21 @@ html,body{
     font-size: 1.8rem;
     background-color: #272A30;
 }
-#navLeft .logo{
+
+#navLeft .logo {
     font-size: 3.5rem;
     color: orangered;
 }
-#navLeft .icons{
+
+#navLeft .icons {
     display: flex;
     flex-direction: column;
     padding-left: 2vh;
     gap: 5vh;
     color: #b3acac;
 }
-.recBorder{
+
+.recBorder {
     display: flex;
     align-items: center;
     padding-left: 1vh;
@@ -123,10 +137,13 @@ html,body{
     background-color: #23272C;
     /* box-shadow: -2px -2px 2px -0.5px rgba(255,255,255,0.66),5px 5px 4px 0px rgba(0,0,0,0.44) ; */
 }
-.recBorder:nth-child(1),.recBorder:hover{
-    box-shadow: -2px -2px 2px -0.5px rgba(255,255,255,0.66),5px 5px 4px 0px rgba(0,0,0,0.44) ;
+
+.recBorder:nth-child(1),
+.recBorder:hover {
+    box-shadow: -2px -2px 2px -0.5px rgba(255, 255, 255, 0.66), 5px 5px 4px 0px rgba(0, 0, 0, 0.44);
 }
-#container{
+
+#container {
     width: calc(100% - 10vh);
     height: calc(100% - 10vh);
     margin-left: 10vh;
@@ -135,7 +152,8 @@ html,body{
     padding: 0 2vh;
     position: relative;
 }
-.scroll{
+
+.scroll {
     position: relative;
     height: 19vw;
     width: 100%;
@@ -143,16 +161,19 @@ html,body{
     overflow-x: auto;
     margin: 2vh 0;
 }
-.scroll::-webkit-scrollbar{
+
+.scroll::-webkit-scrollbar {
     display: none;
 }
-.cardsContainer{
+
+.cardsContainer {
     position: absolute;
     display: flex;
     gap: 2.5vh;
     margin-top: 2vh;
 }
-.card{
+
+.card {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -162,7 +183,8 @@ html,body{
     cursor: pointer;
     background-color: #1d1e20a8;
 }
-.card .image{
+
+.card .image {
     position: relative;
     overflow: hidden;
     width: 100%;
@@ -170,11 +192,13 @@ html,body{
     align-items: center;
     justify-content: center;
 }
-.card .image img{
+
+.card .image img {
     width: 90%;
     border-radius: 12px;
 }
-.card .text{
+
+.card .text {
     width: 100%;
     text-align: center;
     display: flex;
@@ -184,11 +208,13 @@ html,body{
     margin-top: 1vh;
     color: #fff;
 }
-.text span{
+
+.text span {
     margin-top: .5vh;
     font-size: 1rem;
 }
-.image i{
+
+.image i {
     position: absolute;
     bottom: 1%;
     right: 5%;
@@ -196,12 +222,14 @@ html,body{
     color: orangered;
     font-size: 4rem;
 }
-#footer{
+
+#footer {
     width: 100%;
     height: 12vw;
     border-top: 1px solid #dadada;
 }
-#player{
+
+#player {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -214,18 +242,21 @@ html,body{
     color: #fff;
     padding: 0 2vh;
 }
-#playerlft{
+
+#playerlft {
     display: flex;
     align-items: center;
     gap: 2vh;
     font-size: 1.1rem;
     color: #fff;
 }
-#playerlft img{
+
+#playerlft img {
     width: 10vh;
     height: 10vh;
 }
-#playercntr{
+
+#playercntr {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -236,22 +267,27 @@ html,body{
     font-size: 2rem;
     gap: 1vh;
 }
-#play{
+
+#play {
     display: flex;
     gap: 3vh;
 }
-#play i{
+
+#play i {
     cursor: pointer;
 }
-#playercntr input{
+
+#playercntr input {
     width: 30vw;
 }
-.size{
+
+.size {
     margin-top: .5vh;
     font-size: 1.5rem;
     line-height: 1;
 }
-#playerrgt{
+
+#playerrgt {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -259,24 +295,29 @@ html,body{
     color: #fff;
     /* font-size: 2rem; */
 }
-#volumeBar{
+
+#volumeBar {
     font-size: 1.2rem;
     margin-right: 2vh;
 }
-#playerrgt i{
+
+#playerrgt i {
     font-size: 2rem;
     margin-right: 5px;
 }
-#playerrgt input{
+
+#playerrgt input {
     -webkit-appearance: none;
     width: 100%;
     -webkit-transition: .2s;
     outline: none;
     height: 10px;
-    background: linear-gradient(90deg,orangered 100%,#dadada 0%);
+    background: linear-gradient(90deg, orangered 100%, #dadada 0%);
     border-radius: 8px;
 }
-#playerrgt input::-webkit-slider-thumb,#playercntr input::-webkit-slider-thumb{
+
+#playerrgt input::-webkit-slider-thumb,
+#playercntr input::-webkit-slider-thumb {
     -webkit-appearance: none;
     height: 17px;
     width: 17px;
@@ -285,39 +326,46 @@ html,body{
     cursor: pointer;
     background: orangered;
 }
-#playerrgt input::-moz-range-thumb,#playercntr input::-moz-range-thumb{
+
+#playerrgt input::-moz-range-thumb,
+#playercntr input::-moz-range-thumb {
     border-radius: 50%;
     height: 14px;
     width: 14px;
     background: orangered;
     cursor: pointer;
 }
-#progressbar{
+
+#progressbar {
     -webkit-appearance: none;
     width: 100%;
     -webkit-transition: .01s;
     outline: none;
     height: 10px;
-    background: linear-gradient(90deg,orangered 0%,#dadada 0%);
+    background: linear-gradient(90deg, orangered 0%, #dadada 0%);
     border-radius: 8px;
 }
+
 @media(max-width:500px) {
     .navrgt button {
-    height: 7vw;
-    width: 11vh;
-    font-size: 2.3vw;
-    padding: 8px 5px;
+        height: 7vw;
+        width: 11vh;
+        font-size: 2.3vw;
+        padding: 8px 5px;
     }
-    .crclBorder{
-    height: 7vw;
-    width: 7vw;
-    font-size: 1rem;
+
+    .crclBorder {
+        height: 7vw;
+        width: 7vw;
+        font-size: 1rem;
     }
-    #navTop{
+
+    #navTop {
         height: 15vw;
         padding: 1vw;
         background-color: #272a30df;
     }
+
     #search {
         font-size: 0.9rem;
         width: 40vw;
@@ -325,60 +373,75 @@ html,body{
         gap: 1vw;
         margin-left: 15vw;
     }
-    #search input{
+
+    #search input {
         font-size: 0.9rem;
         overflow: hidden;
     }
+
     .navrgt {
         gap: 2vw;
     }
-    #navLeft{
+
+    #navLeft {
         width: 15vw;
         padding-top: 3vw;
         font-size: 1.3rem;
     }
+
     #navLeft .logo {
         font-size: 2.5rem;
     }
-    .recBorder{
+
+    .recBorder {
         width: 11vw;
     }
-    #container{
+
+    #container {
         width: 100%;
         padding: 0 1vh;
         margin-top: 9vh;
         margin-left: 6vh;
     }
-    #container h1{
+
+    #container h1 {
         margin-left: 1vh;
         font-size: 1.2rem;
     }
+
     .scroll {
         position: relative;
         height: 53vw;
         margin: 1vw 0;
         margin-left: 0.5vh;
     }
-    .cardsContainer{
+
+    .cardsContainer {
         gap: 2vw;
     }
-    .card{
+
+    .card {
         width: 18vh;
         height: 24vh;
     }
+
     .image i {
         font-size: 2rem;
     }
-    .text h3{
+
+    .text h3 {
         font-size: 0.8rem;
     }
+
     .text span {
         font-size: 0.6rem;
     }
-    #footer{
+
+    #footer {
         height: 20vh;
     }
-    #player{
+
+    #player {
         /* position: relative; */
         height: 12vh;
         bottom: 0%;
@@ -386,50 +449,62 @@ html,body{
         align-items: normal;
         padding-top: 1vw;
     }
-    #playerlft{
-            display: flex;
-            align-items: center;
-            height: 8vh;
-            gap: 5vw;
-            font-size: 0.7rem;
-            color: #fff;
+
+    #playerlft {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        height: 8vh;
+        /* gap: 5vw; */
+        font-size: 0.7rem;
+        color: #fff;
     }
-    #playerlft h5{
+
+    #playerlft h5 {
         font-size: 0.8rem;
     }
-    #playerlft img{
+
+    #playerlft img {
         width: 10vw;
         height: 10vw;
     }
-    #playerlft i{
+
+    #playerlft i {
         font-size: 1rem;
     }
-    #playerrgt{
+
+    #playerrgt {
         display: none;
     }
-    #playercntr{
+
+    #playercntr {
         left: 50%;
         bottom: 4.5%;
         transform: translateX(-50%);
         width: 100%;
         font-size: 1.3rem;
     }
+
     #playercntr input {
         width: 95%;
         height: 1.3vw;
     }
-    #playercntr input::-webkit-slider-thumb{
+
+    #playercntr input::-webkit-slider-thumb {
         height: 3vw;
         width: 3vw;
     }
-    #playercntr input::-moz-range-thumb{
+
+    #playercntr input::-moz-range-thumb {
         height: 3vw;
         width: 3vw;
     }
-    .size{
+
+    .size {
         margin-top: 1vw;
         font-size: 1rem;
         line-height: 1;
     }
-    
+
 }
