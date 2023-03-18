@@ -183,6 +183,16 @@ body {
     cursor: pointer;
     background-color: #1d1e20a8;
 }
+.card:hover{
+    background-color: #6a6a6ba8;
+    /* transform: scale(1.2); */
+}
+.card:hover i{
+    opacity: 1;
+    bottom: 1%;
+    transition: all cubic-bezier(0.19, 1, 0.22, 1)ease;
+    transition-duration: .3s;
+}
 
 .card .image {
     position: relative;
@@ -191,6 +201,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    opacity: 1;
+    /* pointer-events: none; */
 }
 
 .card .image img {
@@ -207,6 +219,7 @@ body {
     justify-content: center;
     margin-top: 1vh;
     color: #fff;
+    pointer-events: none;
 }
 
 .text span {
@@ -216,11 +229,12 @@ body {
 
 .image i {
     position: absolute;
-    bottom: 1%;
+    bottom:-5%;
     right: 5%;
     transition: all ease-in 0.1s;
     color: orangered;
     font-size: 4rem;
+    opacity: 0;   
 }
 
 #footer {

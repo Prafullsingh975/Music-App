@@ -12,8 +12,9 @@ let volRange = document.getElementById("vol");
 let previous = document.getElementById("pre");
 let nextSong = document.getElementById("nxt");
 let repeat = document.getElementById("repeat");
+let cardeee = document.querySelectorAll(".card");
 var num;
-let songIndex = 0;
+let songIndex = Number(0);
 let ch = 0;
 let rec = 0;
 let vol;
@@ -62,7 +63,6 @@ let playElement = new Audio("./songs/1.mp3");
 playElement.addEventListener("timeupdate", () => {
     progress = (playElement.currentTime / playElement.duration * 100);
     progressbar.value = progress;
-
     //changing progressBar color
     var color = `linear-gradient(90deg,orangered ${progress}%,#dadada ${progress}%)`;
     progressbar.style.background = color;
@@ -108,7 +108,7 @@ recentlyPlayed.forEach((elem, i) => {
 })
 
 //Recent Played Player
-recPlayed.addEventListener("click",function (details) {
+recPlayed.addEventListener("click", function (details) {
     var x = (details.target.id);
     playElement.src = `${recentlyPlayed[x].filePath}`;
     playElement.play();
@@ -191,62 +191,70 @@ recommended4u.addEventListener("click", function (details) {
 
 //next song
 //recentlyPlayed
-if (num>0 && num<11) {
-    nextSong.addEventListener("click", () => {
-        if (songIndex == recentlyPlayed.length - 1)
-            songIndex = 0;
-        else
-            songIndex++;
-    
-        let x = songIndex;
-        playElement.src = `${recentlyPlayed[x].filePath}`;
-        playElement.play();
-        coverImg.src = `${recentlyPlayed[x].cover}`;
-        songName.textContent = `${recentlyPlayed[x].name}`;
-        singerName.textContent = `${recentlyPlayed[x].details}`;
-        play.classList.remove("ri-play-circle-fill")
-        play.classList.add("ri-pause-circle-fill")
-        num = (recentlyPlayed[x].filePath.split("/"))[2].split(".")[0];
-    })
-}
+// ---------------------------------------------------------
 
-else if (num>10 && num<21){
-    nextSong.addEventListener("click", () => {
-        if (ch == charts.length - 1)
-            ch = 0;
-        else
-            ch++;
-    
-        let x = ch;
-        playElement.src = `${charts[x].filePath}`;
-        playElement.play();
-        coverImg.src = `${charts[x].cover}`;
-        songName.textContent = `${charts[x].name}`;
-        singerName.textContent = `${charts[x].details}`;
-        play.classList.remove("ri-play-circle-fill")
-        play.classList.add("ri-pause-circle-fill")
-        num = (charts[x].filePath.split("/"))[2].split(".")[0];
-    })
-}
-//recommend4u
-else if(num>20 && num<31){
-    nextSong.addEventListener("click", () => {
-        if (rec == recommend4u.length - 1)
-            rec = 0;
-        else
-            rec++;
-    
-        let x = rec;
-        playElement.src = `${recommend4u[x].filePath}`;
-        playElement.play();
-        coverImg.src = `${recommend4u[x].cover}`;
-        songName.textContent = `${recommend4u[x].name}`;
-        singerName.textContent = `${recommend4u[x].details}`;
-        play.classList.remove("ri-play-circle-fill")
-        play.classList.add("ri-pause-circle-fill")
-        num = (recommend4u[x].filePath.split("/"))[2].split(".")[0];
-    })
-}
+// console.log(num);
+// if (num>0 && num<11) {
+//     nextSong.addEventListener("click", () => {
+//         if (songIndex == recentlyPlayed.length - 1)
+//             songIndex = 0;
+//         else
+//             songIndex++;
+
+//         let x = songIndex;
+//         playElement.src = `${recentlyPlayed[x].filePath}`;
+//         playElement.play();
+//         coverImg.src = `${recentlyPlayed[x].cover}`;
+//         songName.textContent = `${recentlyPlayed[x].name}`;
+//         singerName.textContent = `${recentlyPlayed[x].details}`;
+//         play.classList.remove("ri-play-circle-fill")
+//         play.classList.add("ri-pause-circle-fill")
+//         num = (recentlyPlayed[x].filePath.split("/"))[2].split(".")[0];
+//     })
+// }
+
+// else if (num>10 && num<21){
+//     nextSong.addEventListener("click", () => {
+//         if (ch == charts.length - 1)
+//             ch = 0;
+//         else
+//             ch++;
+
+//         let x = ch;
+//         playElement.src = `${charts[x].filePath}`;
+//         playElement.play();
+//         coverImg.src = `${charts[x].cover}`;
+//         songName.textContent = `${charts[x].name}`;
+//         singerName.textContent = `${charts[x].details}`;
+//         play.classList.remove("ri-play-circle-fill")
+//         play.classList.add("ri-pause-circle-fill")
+//         num = (charts[x].filePath.split("/"))[2].split(".")[0];
+//     })
+// }
+// //recommend4u
+// else if(num>20 && num<31){
+//     nextSong.addEventListener("click", () => {
+//         if (rec == recommend4u.length - 1)
+//             rec = 0;
+//         else
+//             rec++;
+
+//         let x = rec;
+//         playElement.src = `${recommend4u[x].filePath}`;
+//         playElement.play();
+//         coverImg.src = `${recommend4u[x].cover}`;
+//         songName.textContent = `${recommend4u[x].name}`;
+//         singerName.textContent = `${recommend4u[x].details}`;
+//         play.classList.remove("ri-play-circle-fill")
+//         play.classList.add("ri-pause-circle-fill")
+//         num = (recommend4u[x].filePath.split("/"))[2].split(".")[0];
+//     })
+// }
+// else{
+//     num = (recommend4u[x].filePath.split("/"))[2].split(".")[0];
+// }
+
+// -------------------------------------------------------------
 
 //previous song
 previous.addEventListener("click", () => {
@@ -283,7 +291,7 @@ repeat.addEventListener("click", () => {
     // player(x++);
 })
 //suffel
-//effect
+
 
 //volume
 function rangeSlide(value) {
@@ -301,7 +309,7 @@ function rangeSlide(value) {
 }
 
 //Changing VolumeBar Color
-['mousemove','click'].forEach(evt =>volRange.addEventListener(evt, function () {
+['mousemove', 'click'].forEach(evt => volRange.addEventListener(evt, function () {
     var color = `linear-gradient(90deg,orangered ${vol}%,#dadada ${vol}%)`;
     volRange.style.background = color;
 }))
