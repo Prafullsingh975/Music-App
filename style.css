@@ -249,6 +249,8 @@ body {
     text-align: center;
     float: right;
     opacity: .3;
+    font-size: 1rem;
+    padding: 5px;
 }
 
 #player {
@@ -466,7 +468,7 @@ body {
 
     #footer {
         padding: 6px;
-        height: 17vh;
+        height: 18vh;
         font-size: 0.6rem;
     }
 
