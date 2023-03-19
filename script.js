@@ -63,6 +63,46 @@ let playElement = new Audio("./songs/1.mp3");
 playElement.addEventListener("timeupdate", () => {
     progress = (playElement.currentTime / playElement.duration * 100);
     progressbar.value = progress;
+    if (progress == 100) {
+        //recentlyPlayed
+        if (num > 0 && num < 11) {
+            songIndex++;
+            let x = songIndex;
+            playElement.src = `${recentlyPlayed[x].filePath}`;
+            playElement.play();
+            coverImg.src = `${recentlyPlayed[x].cover}`;
+            songName.textContent = `${recentlyPlayed[x].name}`;
+            singerName.textContent = `${recentlyPlayed[x].details}`;
+            play.classList.remove("ri-play-circle-fill")
+            play.classList.add("ri-pause-circle-fill")
+            num = (recentlyPlayed[x].filePath.split("/"))[2].split(".")[0];
+        }
+        else if (num > 10 && num < 21) {
+            ch++;
+            let x = ch;
+            playElement.src = `${charts[x].filePath}`;
+            playElement.play();
+            coverImg.src = `${charts[x].cover}`;
+            songName.textContent = `${charts[x].name}`;
+            singerName.textContent = `${charts[x].details}`;
+            play.classList.remove("ri-play-circle-fill")
+            play.classList.add("ri-pause-circle-fill")
+            num = (charts[x].filePath.split("/"))[2].split(".")[0];
+        }
+        //recommend4u
+        else if (num > 20 && num < 31) {
+            rec++;
+            let x = rec;
+            playElement.src = `${recommend4u[x].filePath}`;
+            playElement.play();
+            coverImg.src = `${recommend4u[x].cover}`;
+            songName.textContent = `${recommend4u[x].name}`;
+            singerName.textContent = `${recommend4u[x].details}`;
+            play.classList.remove("ri-play-circle-fill")
+            play.classList.add("ri-pause-circle-fill")
+            num = (recommend4u[x].filePath.split("/"))[2].split(".")[0];
+        }
+    }
     //changing progressBar color
     var color = `linear-gradient(90deg,orangered ${progress}%,#dadada ${progress}%)`;
     progressbar.style.background = color;
@@ -119,8 +159,6 @@ recPlayed.addEventListener("click", function (details) {
     play.classList.add("ri-pause-circle-fill")
     songIndex = parseInt(x);
     num = (recentlyPlayed[x].filePath.split("/"))[2].split(".")[0];
-    console.log("CHal RAha hai");
-    console.log(num);
 })
 
 //Chart Loader
@@ -254,7 +292,7 @@ previous.addEventListener("click", () => {
             alert("Not previous Song Found")
         }
         else
-            songIndex--;    
+            songIndex--;
 
         let x = songIndex;
         playElement.src = `${recentlyPlayed[x].filePath}`;
@@ -273,7 +311,7 @@ previous.addEventListener("click", () => {
             alert("Not previous Song Found")
         }
         else
-            ch--; 
+            ch--;
         let x = ch;
         playElement.src = `${charts[x].filePath}`;
         playElement.play();
@@ -291,7 +329,7 @@ previous.addEventListener("click", () => {
             alert("Not previous Song Found")
         }
         else
-            rec--; 
+            rec--;
 
         let x = rec;
         playElement.src = `${recommend4u[x].filePath}`;
@@ -322,6 +360,7 @@ repeat.addEventListener("click", () => {
 })
 
 //suffel
+
 
 
 //volume
