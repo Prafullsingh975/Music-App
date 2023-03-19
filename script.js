@@ -13,7 +13,7 @@ let previous = document.getElementById("pre");
 let nextSong = document.getElementById("nxt");
 let repeat = document.getElementById("repeat");
 let cardeee = document.querySelectorAll(".card");
-var num;
+var num = 1;
 let songIndex = Number(0);
 let ch = 0;
 let rec = 0;
@@ -119,6 +119,8 @@ recPlayed.addEventListener("click", function (details) {
     play.classList.add("ri-pause-circle-fill")
     songIndex = parseInt(x);
     num = (recentlyPlayed[x].filePath.split("/"))[2].split(".")[0];
+    console.log("CHal RAha hai");
+    console.log(num);
 })
 
 //Chart Loader
@@ -190,91 +192,119 @@ recommended4u.addEventListener("click", function (details) {
 //previous & next
 
 //next song
-//recentlyPlayed
-// ---------------------------------------------------------
+nextSong.addEventListener("click", () => {
+    //recentlyPlayed
+    if (num > 0 && num < 11) {
+        if (songIndex == recentlyPlayed.length - 1)
+            songIndex = 0;
+        else
+            songIndex++;
 
-// console.log(num);
-// if (num>0 && num<11) {
-//     nextSong.addEventListener("click", () => {
-//         if (songIndex == recentlyPlayed.length - 1)
-//             songIndex = 0;
-//         else
-//             songIndex++;
+        let x = songIndex;
+        playElement.src = `${recentlyPlayed[x].filePath}`;
+        playElement.play();
+        coverImg.src = `${recentlyPlayed[x].cover}`;
+        songName.textContent = `${recentlyPlayed[x].name}`;
+        singerName.textContent = `${recentlyPlayed[x].details}`;
+        play.classList.remove("ri-play-circle-fill")
+        play.classList.add("ri-pause-circle-fill")
+        num = (recentlyPlayed[x].filePath.split("/"))[2].split(".")[0];
+    }
+    else if (num > 10 && num < 21) {
+        if (ch == charts.length - 1)
+            ch = 0;
+        else
+            ch++;
 
-//         let x = songIndex;
-//         playElement.src = `${recentlyPlayed[x].filePath}`;
-//         playElement.play();
-//         coverImg.src = `${recentlyPlayed[x].cover}`;
-//         songName.textContent = `${recentlyPlayed[x].name}`;
-//         singerName.textContent = `${recentlyPlayed[x].details}`;
-//         play.classList.remove("ri-play-circle-fill")
-//         play.classList.add("ri-pause-circle-fill")
-//         num = (recentlyPlayed[x].filePath.split("/"))[2].split(".")[0];
-//     })
-// }
+        let x = ch;
+        playElement.src = `${charts[x].filePath}`;
+        playElement.play();
+        coverImg.src = `${charts[x].cover}`;
+        songName.textContent = `${charts[x].name}`;
+        singerName.textContent = `${charts[x].details}`;
+        play.classList.remove("ri-play-circle-fill")
+        play.classList.add("ri-pause-circle-fill")
+        num = (charts[x].filePath.split("/"))[2].split(".")[0];
+    }
+    //recommend4u
+    else if (num > 20 && num < 31) {
+        if (rec == recommend4u.length - 1)
+            rec = 0;
+        else
+            rec++;
 
-// else if (num>10 && num<21){
-//     nextSong.addEventListener("click", () => {
-//         if (ch == charts.length - 1)
-//             ch = 0;
-//         else
-//             ch++;
-
-//         let x = ch;
-//         playElement.src = `${charts[x].filePath}`;
-//         playElement.play();
-//         coverImg.src = `${charts[x].cover}`;
-//         songName.textContent = `${charts[x].name}`;
-//         singerName.textContent = `${charts[x].details}`;
-//         play.classList.remove("ri-play-circle-fill")
-//         play.classList.add("ri-pause-circle-fill")
-//         num = (charts[x].filePath.split("/"))[2].split(".")[0];
-//     })
-// }
-// //recommend4u
-// else if(num>20 && num<31){
-//     nextSong.addEventListener("click", () => {
-//         if (rec == recommend4u.length - 1)
-//             rec = 0;
-//         else
-//             rec++;
-
-//         let x = rec;
-//         playElement.src = `${recommend4u[x].filePath}`;
-//         playElement.play();
-//         coverImg.src = `${recommend4u[x].cover}`;
-//         songName.textContent = `${recommend4u[x].name}`;
-//         singerName.textContent = `${recommend4u[x].details}`;
-//         play.classList.remove("ri-play-circle-fill")
-//         play.classList.add("ri-pause-circle-fill")
-//         num = (recommend4u[x].filePath.split("/"))[2].split(".")[0];
-//     })
-// }
-// else{
-//     num = (recommend4u[x].filePath.split("/"))[2].split(".")[0];
-// }
-
-// -------------------------------------------------------------
+        let x = rec;
+        playElement.src = `${recommend4u[x].filePath}`;
+        playElement.play();
+        coverImg.src = `${recommend4u[x].cover}`;
+        songName.textContent = `${recommend4u[x].name}`;
+        singerName.textContent = `${recommend4u[x].details}`;
+        play.classList.remove("ri-play-circle-fill")
+        play.classList.add("ri-pause-circle-fill")
+        num = (recommend4u[x].filePath.split("/"))[2].split(".")[0];
+    }
+})
 
 //previous song
 previous.addEventListener("click", () => {
-    if (songIndex == 0) {
-        songIndex = 0;
-        alert("Not previous Song Found")
-    }
-    else
-        songIndex--;
+    //Recently played
+    if (num > 0 && num < 11) {
+        if (songIndex == 0) {
+            songIndex = 0;
+            alert("Not previous Song Found")
+        }
+        else
+            songIndex--;    
 
-    let x = songIndex;
-    playElement.src = `${recentlyPlayed[x].filePath}`;
-    playElement.play();
-    coverImg.src = `${recentlyPlayed[x].cover}`;
-    songName.textContent = `${recentlyPlayed[x].name}`;
-    singerName.textContent = `${recentlyPlayed[x].details}`;
-    play.classList.remove("ri-play-circle-fill")
-    play.classList.add("ri-pause-circle-fill")
-    // player(x++);
+        let x = songIndex;
+        playElement.src = `${recentlyPlayed[x].filePath}`;
+        playElement.play();
+        coverImg.src = `${recentlyPlayed[x].cover}`;
+        songName.textContent = `${recentlyPlayed[x].name}`;
+        singerName.textContent = `${recentlyPlayed[x].details}`;
+        play.classList.remove("ri-play-circle-fill")
+        play.classList.add("ri-pause-circle-fill")
+        num = (recentlyPlayed[x].filePath.split("/"))[2].split(".")[0];
+    }
+    //charts
+    else if (num > 10 && num < 21) {
+        if (ch == 0) {
+            ch = 0;
+            alert("Not previous Song Found")
+        }
+        else
+            ch--; 
+        let x = ch;
+        playElement.src = `${charts[x].filePath}`;
+        playElement.play();
+        coverImg.src = `${charts[x].cover}`;
+        songName.textContent = `${charts[x].name}`;
+        singerName.textContent = `${charts[x].details}`;
+        play.classList.remove("ri-play-circle-fill")
+        play.classList.add("ri-pause-circle-fill")
+        num = (charts[x].filePath.split("/"))[2].split(".")[0];
+    }
+    //recommend4u
+    else if (num > 20 && num < 31) {
+        if (rec == 0) {
+            rec = 0;
+            alert("Not previous Song Found")
+        }
+        else
+            rec--; 
+
+        let x = rec;
+        playElement.src = `${recommend4u[x].filePath}`;
+        playElement.play();
+        coverImg.src = `${recommend4u[x].cover}`;
+        songName.textContent = `${recommend4u[x].name}`;
+        singerName.textContent = `${recommend4u[x].details}`;
+        play.classList.remove("ri-play-circle-fill")
+        play.classList.add("ri-pause-circle-fill")
+        num = (recommend4u[x].filePath.split("/"))[2].split(".")[0];
+    }
 })
+
 //repeat
 let flag = 0;
 repeat.addEventListener("click", () => {
@@ -290,6 +320,7 @@ repeat.addEventListener("click", () => {
     }
     // player(x++);
 })
+
 //suffel
 
 
